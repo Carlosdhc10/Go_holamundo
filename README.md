@@ -1,117 +1,120 @@
-## 💻 Hello World Project with Go and Docker 💻
+## 🌍 Go Hello World Project 🌍
 
-This project creates a basic web application in Go that displays a "¡Hola Mundo!" message. The application is also dockerized to facilitate deployment to platforms such as Docker Hub or Render.
+This project creates a basic web application using the Go programming language. The application displays "Hello World!" when accessed at the root URL. It is designed to be deployed on Heroku using Git.
 
-## 📰 **Description**  
+## 📰 Description
+This project uses Go to develop a simple web server that responds with "Hello World!" It is configured to run on Heroku without Docker, simplifying the deployment process.
 
-The project uses Go to create a web application that displays the "Hello, World!" message. It is also dockerized to make it easy to deploy to container services like Docker Hub.
-
-## 🎪 **Project Structure**  
+## 🎪 Project Structure
 
 The project structure is as follows:
 
 Go_holamundo/
+main.go       
+go.mod         
+go.sum         
+Procfile
 
-Dockerfile
+## 🔐 Key Files
 
-go.mod
+main.go: Contains the HTTP server and core application logic.
 
-go.sum
+go.mod and go.sum: Define the module and its dependencies.
 
-main.go
+Procfile: Tells Heroku how to start the application.
 
-## 📖 **Requirements**  
+## 📖 Requirements
 
-- **Go**: Make sure you have Go installed to run the application locally.
-  
-- **Docker**: You need Docker installed to build and run the application inside a container.
-  
-- **Docker Hub (Optional)**: If you want to push the image to Docker Hub, you need an account on [Docker Hub](https://hub.docker.com/).
-  
-- **Render (Optional)**: If you want to deploy the application on Render, you need an account on [Render](https://render.com/).
+Go: Ensure Go is installed (preferably the latest version).
 
-## 🔨 **Installation**  
+Git: Required for managing the source code and deploying to Heroku.
 
-1. Clone the repository:
+Heroku CLI: To deploy the application on Heroku.
+
+## 🔨 Installation
+
+### 1. Clone the Repository
    
+Clone this repository to your local machine:
+
 ```bash
-git clone https://github.com/Carlosdhc333/Go_holamundo.git
+git clone https://github.com/Carlosdhc10/Go_holamundo.git
 ```
 
-2.- Navigate to the project directory:
+### 2. Navigate to the Project Directory
+
+Enter the project directory:
 
 ```bash
 cd Go_holamundo
 ```
 
-3.- Initialize the Go module and download the dependencies:
+### 3. Run Locally
 
-```bash
-go mod tidy
-```
-
-## ✈️ Running the Application
-
-To run the application locally, use the following command:
+Start the application locally:
 
 ```bash
 go run main.go
 ```
 
-The application will run on port 8080 on your local machine. You can access it at http://localhost:8080.
+Access the application at http://localhost:8080.
 
-## 🐳 Building the Docker Image
+## ✈️ Deployment on Heroku
 
-To build the Docker image, use the following command inside the project directory:
-
-```bash
-docker build -t carlosdhc333/go_holamundo:v1 .
-```
-
-Once the Docker image is built, you can run the container with the following command:
+### 1. Log In to Heroku
+   
+Log in to Heroku using the following command:
 
 ```bash
-docker run --rm -p 8080:8080 carlosdhc333/go_holamundo:v1
+heroku login
 ```
 
-## 🎈 Pushing to Docker Hub (Optional)
+### 2. Create a Heroku Application
 
-If you want to share the container on Docker Hub, follow these steps:
-
-1.- Log in to Docker Hub:
+Create a new application on Heroku:
 
 ```bash
-docker login
+heroku create
 ```
 
-2.- Tag the image:
+### 3. Configure the Procfile
+
+Ensure your project includes a Procfile with the following content:
 
 ```bash
-docker tag carlosdhc333/go_holamundo:v1 your_username/go_holamundo
+web: go run main.go
 ```
 
-3.- Push the image:
+This tells Heroku how to start your application.
+
+### 4. Deploy to Heroku
+   
+Add changes to Git:
 
 ```bash
-docker push your_username/go_holamundo
+git add .
+git commit -m "Initial deployment to Heroku"
+git push heroku main
 ```
 
-## 📈 Deploying to Render (Optional)
+### 6. Open the Application
 
-To deploy this application on Render, follow these steps:
+Once deployed successfully, open your application in a browser:
 
-1.- Upload the repository to GitHub.
+```bash
+heroku open
+```
 
-2.- On Render, select "New" > "Web Service" and connect the repository.
+## 🎈 View Logs
 
-3.- Set the execution command to go run main.go in the Render settings.
+If you encounter any issues, view the Heroku logs using:
 
-Render will handle building the image and running the application, displaying the message in the service log output.
+```bash
+heroku logs --tail
+```
 
-## 🎳 Contributing
+## 🎳 Contributions
+Feel free to fork this repository and submit pull requests to improve the project.
 
-If you want to improve the project, feel free to fork and send a pull request!
-
-## ©️ License ©️
-
-This English version mirrors the structure and instructions from the original markdown, tailored to a Go and Docker application. Let me know if you need any further changes!
+## 📜 License
+This project is open source. You can use and adapt it according to your needs.
